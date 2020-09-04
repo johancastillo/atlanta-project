@@ -19,26 +19,33 @@
         </div>
 
         <div class="col-md-4">
-          <form class="p-5 text-white bg-info">
+          <div class="p-5 text-white bg-info">
             <fieldset>
               <legend>Login</legend>
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Nombre de usuario o email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="text" class="form-control" v-model="name"
+                id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter email" autocomplete="off">
+
                 <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
               </div>
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" v-model="pass" class="form-control"
+                id="exampleInputPassword1" placeholder="Password">
               </div>
 
               <p>¿No tienes cuenta? <b><a href="register.html">registrate.</a></b></p>
 
-              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              <button @click="validar()" class="btn btn-primary btn-block" id="btn">
+                Submit
+              </button>
+
             </fieldset>
-          </form>
+          </div>
         </div>
 
       </div>
@@ -48,6 +55,7 @@
     <!-- Scripts -->
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/sweetalert2@9.js"></script>
+    <script src="assets/js/jquey-3.5.1.js"></script>
     <script src="assets/js/main.js"></script>
 
   </body>
