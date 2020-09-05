@@ -1,0 +1,31 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: #FFFFFA;
+}
+
+.contenido{
+  width: 800px;
+  margin: 20px auto;
+  text-align: justify;
+}
+
+.contenido p{
+  margin-bottom: 1em;
+}
+
+/* Botón de ir arriba */
+.ir-arriba{
+  display: none;
+  padding: 20px;
+  background: #23282e;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
