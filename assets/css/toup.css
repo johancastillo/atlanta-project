@@ -1,22 +1,3 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-
-body{
-  background: #FFFFFA;
-}
-
-.contenido{
-  width: 800px;
-  margin: 20px auto;
-  text-align: justify;
-}
-
-.contenido p{
-  margin-bottom: 1em;
-}
-
 /* Botón de ir arriba */
 .ir-arriba{
   display: none;

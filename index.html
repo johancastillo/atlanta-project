@@ -67,97 +67,87 @@
           <div class="col-md-5">
             <div class="card bg-dark">
               <div class="card-body">
-                <form id="task-form">
+                <div id="task-form">
 
                   <input type="hidden" id="taskId">
 
                   <div class="form-group">
-                    <input type="text" class="form-control" id="name"
-                    placeholder="Nombre de la tarea" required
-                    pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
+                    <input type="text" v-model="credito" class="form-control" id="name"
+                    placeholder="$" required
+                    pattern="[0-9]{1,20}" autocomplete="off">
                   </div>
 
                   <div class="form-group">
-                    <textarea rows="8" cols="80" id="description" class="form-control"
-                    placeholder="Escriba una descripción" value="" required
-                    ppattern="[A-Za-z0-9_-]{1,50}"></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleSelect1" class="text">¿Cuánto tiempo necesitas para pagar?</label>
-                    <select class="form-control" id="exampleSelect1">
-                      <option>15 años</option>
-                      <option>20 años</option>
-                      <option>30 años</option>
+                    <label for="exampleSelect1" class="text">
+                      ¿Cuánto tiempo necesitas para pagar?
+                    </label>
+                    <select v-model="anos" class="form-control" required>
+                      <option value="15">15 años</option>
+                      <option value="20">20 años</option>
+                      <option value="30">30 años</option>
                     </select>
                   </div>
 
                   <div class="form-group container-fluid">
                     <label class="text">Down Payment</label>
 
-                    <div class="row">
-
-                      <div class="col-sm-4">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck1" value="15" checked="">
-                          <label class="custom-control-label text" for="customCheck1">3,5%</label>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-4">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck2" value="5">
-                          <label class="custom-control-label text" for="customCheck2">5%</label>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-4">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck3" value="10">
-                          <label class="custom-control-label text" for="customCheck3">10%</label>
-                        </div>
-                      </div>
-
+                    <div class="form-check">
+                      <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
+                      id="exampleRadios1" value="3,5" checked>
+                      <label class="form-check-label text" for="exampleRadios1">
+                        3,5%
+                      </label>
                     </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
+                      id="exampleRadios2" value="5">
+                      <label class="form-check-label text" for="exampleRadios2">
+                        5%
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
+                      id="exampleRadios3" value="10">
+                      <label class="form-check-label text" for="exampleRadios3">
+                        10%
+                      </label>
+                    </div>
+
 
                   </div>
 
                   <div class="form-group">
-                    <input type="text" class="form-control" id="name"
+                    <input type="text" v-model="intereses" class="form-control" id="name"
                     placeholder="Tasa de intereses(%)" required
-                    pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
+                    pattern="[0-9]{1,20}" autocomplete="off">
                   </div>
 
-                  <button @click="guardar()" class="btn btn-primary btn-block text-center">
+                  <button @click="calcular()" class="btn btn-primary btn-block text-center">
                     Guardar tarea
                   </button>
 
-                  <button type="submit" class="btn btn-warning btn-block text-center">
+                  <button class="btn btn-warning btn-block text-center">
                     Generar PDF
                   </button>
 
-                </form>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="col-md-7">
-          <!-- Resultado de las busquedas -->
-          <div class="card my-4" id="task-result">
-            <div class="card-body">
-              <ul id="container">
-
-              </ul>
-            </div>
-          </div>
 
           <!-- Tabla -->
-            <table class="table table-bordered table-sm text-center">
+            <table class="table table-bordered table-sm text-center table-light">
               <thead>
                 <tr>
-                  <td>ID</td>
-                  <td>Nombre</td>
-                  <td>Descripción</td>
+                  <td>Mes</td>
+                  <td>Intereses</td>
+                  <td>Amortizacion</td>
+                  <td>Cuota Mensual</td>
+                  <td>Capital Pendiente</td>
                 </tr>
               </thead>
 
@@ -177,7 +167,6 @@
     <script src="assets/js/toup.js"></script>
     <script src="assets/js/sweetalert2@9.js"></script>
     <script src="assets/js/vue.js"></script>
-    <script src="assets/js/main.js"></script>
     <script src="assets/js/app.js"></script>
 
   </body>
