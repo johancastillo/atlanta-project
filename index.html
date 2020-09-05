@@ -2,61 +2,134 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Calculadora Hipotecaria</title>
 
+    <!-- Iconos de Font Awesome -->
+    <script src="https://kit.fontawesome.com/5da0232ac8.js" crossorigin="anonymous"></script>
+
+    <!-- bootswatch -->
     <link rel="stylesheet" href="assets/css/bootswatch-theme-lux.min.css">
-    <link rel="stylesheet" href="assets/css/estilos.css">
-  </head>
-  <body>
-    <!-- Formulario de Login -->
-    <div id="app" class="container-fluid mt-4">
-      <h1 class="text-center">{{ title }}</h1>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/estilos.css">
+
+    <!-- Button to up -->
+    <link rel="stylesheet" href="css/toup.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/toup.js"></script>
+  </head>
+
+  <body>
+  <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg bg-dark">
+   <a class="navbar-brand" href="#">
+    <img src="assets/img/logo-casa.png" width="65" height="65" alt="" loading="lazy">
+   </a>
+
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon fas fa-bars text-white"></span>
+   </button>
+
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav mr-auto">
+       <li class="nav-item active">
+         <a class="nav-link text" href="http://tucasapropiaenatlanta.com/">Inicio</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link text" href="http://tucasapropiaenatlanta.com/tucasapropia/">Tu Casa Propia</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link text" href="http://tucasapropiaenatlanta.com/category/inmuebles/">Encuentra Tu Hogar</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link text" href="http://tucasapropiaenatlanta.com/category/blog/">Blog</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link text" href="http://tucasapropiaenatlanta.com/ser-pre-aprobado/">Ser Pre-aprobado</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link text" href="http://tucasapropiaenatlanta.com/contactar-agente/">Quiero Contactar un Agente</a>
+       </li>
+     </ul>
+   </div>
+ </nav>
+
+ <!-- Banner -->
+<div class="container mt-4">
+  <div class="card mb-3">
+   <img src="assets/img/banner.png" class="card-img-top" alt="...">
+ </div>
+</div>
+
+    <!-- Container -->
+    <div class="container-fluid p-4">
       <div class="row justify-content-center">
 
-        <div class="col-md-6">
-          <img src="assets/img/banner.jpg" alt="" class="banner">
+        <div class="col-md-5">
+          <div class="card bg-dark">
+            <div class="card-body">
+              <form id="task-form">
+
+                <input type="hidden" id="taskId">
+
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name"
+                  placeholder="Nombre de la tarea" required
+                  pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
+                </div>
+
+                <div class="form-group">
+                  <textarea rows="8" cols="80" id="description" class="form-control"
+                  placeholder="Escriba una descripción" value="" required
+                  ppattern="[A-Za-z0-9_-]{1,50}"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block text-center">
+                  Guardar tarea
+                </button>
+
+                <button type="submit" class="btn btn-warning btn-block text-center">
+                  Generar PDF
+                </button>
+
+              </form>
+            </div>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="p-5 text-white bg-info">
-            <fieldset>
-              <legend>Login</legend>
+        <div class="col-md-7">
+        <!-- Resultado de las busquedas -->
+        <div class="card my-4" id="task-result">
+          <div class="card-body">
+            <ul id="container">
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">Nombre de usuario o email</label>
-                <input type="text" class="form-control" v-model="name"
-                id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email" autocomplete="off">
-
-                <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" v-model="pass" class="form-control"
-                id="exampleInputPassword1" placeholder="Password">
-              </div>
-
-              <p>¿No tienes cuenta? <b><a href="register.html">registrate.</a></b></p>
-
-              <button @click="validar()" class="btn btn-primary btn-block" id="btn">
-                Submit
-              </button>
-
-            </fieldset>
+            </ul>
           </div>
+        </div>
+
+        <!-- Tabla -->
+          <table class="table table-bordered table-sm text-center">
+            <thead>
+              <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Descripción</td>
+              </tr>
+            </thead>
+
+            <tbody id="tasks"></tbody>
+          </table>
         </div>
 
       </div>
     </div>
 
+    <!-- Botón de ir arriba -->
+    <span class="ir-arriba fas fa-sort-up"></span>
 
     <!-- Scripts -->
-    <script src="assets/js/vue.js"></script>
     <script src="assets/js/sweetalert2@9.js"></script>
-    <script src="assets/js/jquey-3.5.1.js"></script>
+    <script src="assets/js/jquery-3.5.1.js"></script>
     <script src="assets/js/main.js"></script>
-
   </body>
 </html>
