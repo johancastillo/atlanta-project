@@ -73,7 +73,7 @@
 
                   <div class="form-group">
                     <input type="text" v-model="credito" class="form-control" id="name"
-                    placeholder="$" required
+                    placeholder="$"
                     pattern="[0-9]{1,20}" autocomplete="off">
                   </div>
 
@@ -90,29 +90,38 @@
 
                   <div class="form-group container-fluid">
                     <label class="text">Down Payment</label>
+                    <div class="row">
 
-                    <div class="form-check">
-                      <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
-                      id="exampleRadios1" value="3,5" checked>
-                      <label class="form-check-label text" for="exampleRadios1">
-                        3,5%
-                      </label>
-                    </div>
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
+                          id="exampleRadios1" value="3.5" checked>
+                          <label class="form-check-label text pt-1" for="exampleRadios1">
+                            3,5%
+                          </label>
+                        </div>
+                      </div>
 
-                    <div class="form-check">
-                      <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
-                      id="exampleRadios2" value="5">
-                      <label class="form-check-label text" for="exampleRadios2">
-                        5%
-                      </label>
-                    </div>
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
+                          id="exampleRadios2" value="5">
+                          <label class="form-check-label text pt-1" for="exampleRadios2">
+                            5%
+                          </label>
+                        </div>
+                      </div>
 
-                    <div class="form-check">
-                      <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
-                      id="exampleRadios3" value="10">
-                      <label class="form-check-label text" for="exampleRadios3">
-                        10%
-                      </label>
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <input class="form-check-input" v-model="downpayment" type="radio" name="downpayment"
+                          id="exampleRadios3" value="10">
+                          <label class="form-check-label text pt-1" for="exampleRadios3">
+                            10%
+                          </label>
+                        </div>
+                      </div>
+
                     </div>
 
 
@@ -120,7 +129,7 @@
 
                   <div class="form-group">
                     <input type="text" v-model="intereses" class="form-control" id="name"
-                    placeholder="Tasa de intereses(%)" required
+                    placeholder="Tasa de intereses(%)"
                     pattern="[0-9]{1,20}" autocomplete="off">
                   </div>
 
@@ -140,7 +149,7 @@
           <div class="col-md-7">
 
           <!-- Tabla -->
-            <table class="table table-bordered table-sm text-center table-light">
+            <table class="table table-bordered table-sm text-center table-light mt-2">
               <thead>
                 <tr>
                   <td>Mes</td>
@@ -151,8 +160,17 @@
                 </tr>
               </thead>
 
-              <tbody id="tasks"></tbody>
+              <tbody id="result">
+                <tr v-for="result of results">
+                  <td>{{ result.mes }}</td>
+                  <td>{{ result.intereses }}</td>
+                  <td>{{ result.amortizacion }}</td>
+                  <td>{{ result.cuota_mensual }}</td>
+                  <td>{{ result.capital_pendiente }}</td>
+                </tr>
+              </tbody>
             </table>
+
           </div>
 
         </div>
