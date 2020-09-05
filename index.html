@@ -59,111 +59,114 @@
  </div>
 </div>
 
-    <!-- Container -->
-    <div class="container-fluid p-4">
-      <div class="row justify-content-center">
+    <div id="app">
+      <!-- Container -->
+      <h1>{{ title }}</h1>
+      <div class="container-fluid p-4">
+        <div class="row justify-content-center">
 
-        <div class="col-md-5">
-          <div class="card bg-dark">
-            <div class="card-body">
-              <form id="task-form">
+          <div class="col-md-5">
+            <div class="card bg-dark">
+              <div class="card-body">
+                <form id="task-form">
 
-                <input type="hidden" id="taskId">
+                  <input type="hidden" id="taskId">
 
-                <div class="form-group">
-                  <input type="text" class="form-control" id="name"
-                  placeholder="Nombre de la tarea" required
-                  pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
-                </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name"
+                    placeholder="Nombre de la tarea" required
+                    pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
+                  </div>
 
-                <div class="form-group">
-                  <textarea rows="8" cols="80" id="description" class="form-control"
-                  placeholder="Escriba una descripción" value="" required
-                  ppattern="[A-Za-z0-9_-]{1,50}"></textarea>
-                </div>
+                  <div class="form-group">
+                    <textarea rows="8" cols="80" id="description" class="form-control"
+                    placeholder="Escriba una descripción" value="" required
+                    ppattern="[A-Za-z0-9_-]{1,50}"></textarea>
+                  </div>
 
-                <div class="form-group">
-                  <label for="exampleSelect1" class="text">¿Cuánto tiempo necesitas para pagar?</label>
-                  <select class="form-control" id="exampleSelect1">
-                    <option>15 años</option>
-                    <option>20 años</option>
-                    <option>30 años</option>
-                  </select>
-                </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1" class="text">¿Cuánto tiempo necesitas para pagar?</label>
+                    <select class="form-control" id="exampleSelect1">
+                      <option>15 años</option>
+                      <option>20 años</option>
+                      <option>30 años</option>
+                    </select>
+                  </div>
 
-                <div class="form-group container-fluid">
-                  <label class="text">Down Payment</label>
+                  <div class="form-group container-fluid">
+                    <label class="text">Down Payment</label>
 
-                  <div class="row">
+                    <div class="row">
 
-                    <div class="col-sm-4">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" value="15" checked="">
-                        <label class="custom-control-label text" for="customCheck1">3,5%</label>
+                      <div class="col-sm-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1" value="15" checked="">
+                          <label class="custom-control-label text" for="customCheck1">3,5%</label>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-4">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck2" value="5">
-                        <label class="custom-control-label text" for="customCheck2">5%</label>
+                      <div class="col-sm-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck2" value="5">
+                          <label class="custom-control-label text" for="customCheck2">5%</label>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-4">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck3" value="10">
-                        <label class="custom-control-label text" for="customCheck3">10%</label>
+                      <div class="col-sm-4">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck3" value="10">
+                          <label class="custom-control-label text" for="customCheck3">10%</label>
+                        </div>
                       </div>
+
                     </div>
 
                   </div>
 
-                </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name"
+                    placeholder="Tasa de intereses(%)" required
+                    pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
+                  </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control" id="name"
-                  placeholder="Tasa de intereses(%)" required
-                  pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
-                </div>
+                  <button type="submit" class="btn btn-primary btn-block text-center">
+                    Guardar tarea
+                  </button>
 
-                <button type="submit" class="btn btn-primary btn-block text-center">
-                  Guardar tarea
-                </button>
+                  <button type="submit" class="btn btn-warning btn-block text-center">
+                    Generar PDF
+                  </button>
 
-                <button type="submit" class="btn btn-warning btn-block text-center">
-                  Generar PDF
-                </button>
-
-              </form>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-md-7">
-        <!-- Resultado de las busquedas -->
-        <div class="card my-4" id="task-result">
-          <div class="card-body">
-            <ul id="container">
+          <div class="col-md-7">
+          <!-- Resultado de las busquedas -->
+          <div class="card my-4" id="task-result">
+            <div class="card-body">
+              <ul id="container">
 
-            </ul>
+              </ul>
+            </div>
           </div>
+
+          <!-- Tabla -->
+            <table class="table table-bordered table-sm text-center">
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>Nombre</td>
+                  <td>Descripción</td>
+                </tr>
+              </thead>
+
+              <tbody id="tasks"></tbody>
+            </table>
+          </div>
+
         </div>
-
-        <!-- Tabla -->
-          <table class="table table-bordered table-sm text-center">
-            <thead>
-              <tr>
-                <td>ID</td>
-                <td>Nombre</td>
-                <td>Descripción</td>
-              </tr>
-            </thead>
-
-            <tbody id="tasks"></tbody>
-          </table>
-        </div>
-
       </div>
     </div>
 
@@ -176,5 +179,7 @@
     <script src="assets/js/sweetalert2@9.js"></script>
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/app.js"></script>
+
   </body>
 </html>
