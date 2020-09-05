@@ -84,6 +84,51 @@
                   ppattern="[A-Za-z0-9_-]{1,50}"></textarea>
                 </div>
 
+                <div class="form-group">
+                  <label for="exampleSelect1" class="text">¿Cuánto tiempo necesitas para pagar?</label>
+                  <select class="form-control" id="exampleSelect1">
+                    <option>15 años</option>
+                    <option>20 años</option>
+                    <option>30 años</option>
+                  </select>
+                </div>
+
+                <div class="form-group container-fluid">
+                  <label class="text">Down Payment</label>
+
+                  <div class="row">
+
+                    <div class="col-sm-4">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" value="15" checked="">
+                        <label class="custom-control-label text" for="customCheck1">3,5%</label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" value="5">
+                        <label class="custom-control-label text" for="customCheck2">5%</label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3" value="10">
+                        <label class="custom-control-label text" for="customCheck3">10%</label>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name"
+                  placeholder="Tasa de intereses(%)" required
+                  pattern="[A-Za-z0-9_-]{1,20}" title="Ingresa texto">
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-block text-center">
                   Guardar tarea
                 </button>
