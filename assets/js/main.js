@@ -70,6 +70,7 @@ $(function(){
 
       edit = false;
     });
+
   });
 
   //Obtener tareas

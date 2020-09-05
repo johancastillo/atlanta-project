@@ -14,7 +14,31 @@ const app = new Vue({
   },
   methods: {
     calcular(){
-      alert(result);
+      const postData = {
+        credito: this.credito,
+        anos: this.anos,
+        downpayment: this.downpayment,
+        intereses: this.intereses
+      };
+
+      //Enviar datos del formulario a PHP mediante AJAX
+      $.post('backend/calcular.php', postData, response =>{
+
+        //Mensaje de exito al crear una nueva tarea
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se aplicaron los calculos correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        //Resetear campos de formularios al enviar datos
+        $('#task-form').trigger('reset');
+
+        console.log(response)
+      });
+
     }
   }
 });
