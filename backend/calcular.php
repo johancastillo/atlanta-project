@@ -5,6 +5,7 @@
     $anos = $_POST["anos"];
     $intereses = $_POST["intereses"];
     $downpayment = $_POST["downpayment"];
+    $totalin = 0;
 
     echo $credito;
   }
