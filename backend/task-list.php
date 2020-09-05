@@ -1,7 +1,7 @@
 <?php
 
-  include('database.php');
 
+/*
   $query = "SELECT * FROM task";
   $result = mysqli_query($connection, $query);
 
@@ -23,5 +23,6 @@
   $jsonstring = json_encode($json);
   //Retornar JSON
   echo $jsonstring;
+*/
 
  ?>

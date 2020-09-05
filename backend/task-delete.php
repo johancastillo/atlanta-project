@@ -1,7 +1,6 @@
 <?php
 
-  include('database.php');
-
+/*
   if(isset($_POST['id'])){
     //Recibir ID del frontend
     $id = $_POST['id'];
@@ -18,5 +17,6 @@
     echo "Task Delete Successfully";
 
   }
+*/
 
  ?>

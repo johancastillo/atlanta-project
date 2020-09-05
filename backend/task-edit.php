@@ -1,7 +1,7 @@
 <?php
 
-  include('database.php');
 
+/*
   $id = $_POST['id'];
   $name = $_POST['name'];
   $description = $_POST['description'];
@@ -17,4 +17,5 @@
 
   //echo "Update task successfully";
 
+*/
  ?>

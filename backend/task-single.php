@@ -1,7 +1,6 @@
 <?php
 
-  include('database.php');
-
+/*
   if ($_POST['id']) {
     // code...
   }
@@ -31,4 +30,5 @@
   //Enviar JSON al Frontend
   echo $jsonstring;
 
+*/
  ?>
