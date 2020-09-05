@@ -10,11 +10,30 @@
     //Calculos
     $downpayment = $downpayment * $credito / 100;
     $credito = $credito - $downpayment;
+    $capitalInicial = $credito + $downpayment;
+    $intereses = ($intereses / 100) / 12;
+    $m = ($credito * $intereses * ( (1+$intereses) ** ($anos*12) ) ) / (((1+$intereses)**($anos*12))-1);
+
+    //Convertir resultados a formato moneda
+    $downpayment = number_format($downpayment,2,',','.').'$';
+    $capitalInicial = number_format($capitalInicial,2,',','.').'$';
+    $cuotaMensual = number_format($m,2,',','.').'$';
+
+
+    //JSON
+    $results = [
+      'downpayment' => $downpayment,
+      'capitalInicial' => $capitalInicial,
+      'cuotaMensual' => $cuotaMensual
+    ];
+
+    $json1 = json_encode($results);
 
 
 
     //echo $downpayment;
-    echo $credito;
+    echo $json1;
+
   }
 
 ?>

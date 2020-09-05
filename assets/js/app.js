@@ -5,6 +5,7 @@ const app = new Vue({
     anos: 15,
     downpayment: 3.5,
     intereses: "",
+    result: null,
     results: [
       {mes: 1, intereses: 24, amortizacion: 23, cuota_mensual: 150, capital_pendiente: 20},
       {mes: 2, intereses: 24, amortizacion: 23, cuota_mensual: 150, capital_pendiente: 20},
@@ -36,7 +37,10 @@ const app = new Vue({
         //Resetear campos de formularios al enviar datos
         $('#task-form').trigger('reset');
 
-        console.log(response)
+        console.log(response);
+        this.result = JSON.parse(response);
+        console.log(this.result);
+
       });
 
     }

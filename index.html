@@ -73,7 +73,7 @@
 
                   <div class="form-group">
                     <input type="text" v-model="credito" class="form-control" id="name"
-                    placeholder="$"
+                    placeholder="¿Cuánto cuesta la casa?"
                     pattern="[0-9]{1,20}" autocomplete="off">
                   </div>
 
@@ -147,6 +147,12 @@
           </div>
 
           <div class="col-md-7">
+            <!-- Results -->
+            <div class="text-center" v-if="result != null">
+              <p>Capital Inicial: {{ result.capitalInicial }}</p>
+              <p>Down Payment: {{ result.downpayment }}</p>
+              <p>Cuota a pagar mensualmente: {{ result.cuotaMensual }}</p>
+            </div>
 
           <!-- Tabla -->
             <table class="table table-bordered table-sm text-center table-light mt-2">
