@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <title>Calculadora Hipotecaria</title>
 
-    <!-- Iconos de Font Awesome -->
-    <script src="https://kit.fontawesome.com/5da0232ac8.js" crossorigin="anonymous"></script>
-
     <!-- bootswatch -->
     <link rel="stylesheet" href="assets/css/bootswatch-theme-lux.min.css">
 
@@ -137,7 +134,7 @@
                     Guardar tarea
                   </button>
 
-                  <button class="btn background btn-block text-center">
+                  <button @click="generarPdf()" class="btn background btn-block text-center">
                     Generar PDF
                   </button>
 
@@ -155,7 +152,7 @@
             </div>
 
           <!-- Tabla -->
-            <table class="table table-bordered table-sm text-center table-light mt-2">
+            <table v-show="results != null" class="table table-bordered table-sm text-center table-light mt-2">
               <thead>
                 <tr>
                   <td>Mes</td>
@@ -171,8 +168,8 @@
                   <td>{{ result.mes }}</td>
                   <td>{{ result.intereses }}</td>
                   <td>{{ result.amortizacion }}</td>
-                  <td>{{ result.cuota_mensual }}</td>
-                  <td>{{ result.capital_pendiente }}</td>
+                  <td>{{ result.cuotaMensual }}</td>
+                  <td>{{ result.capitalPendiente }}</td>
                 </tr>
               </tbody>
             </table>
@@ -194,6 +191,8 @@
     <span class="ir-arriba fas fa-sort-up"></span>
 
     <!-- Scripts -->
+    <!-- Iconos de Font Awesome -->
+    <script src="assets/js/fontawesome.js"></script>
     <script src="assets/js/jquery-3.5.1.js"></script>
     <script src="assets/js/toup.js"></script>
     <script src="assets/js/sweetalert2@9.js"></script>

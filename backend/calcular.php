@@ -20,19 +20,51 @@
     $cuotaMensual = number_format($m,2,',','.').'$';
 
 
-    //JSON
+    //JSON 1
     $results = [
       'downpayment' => $downpayment,
       'capitalInicial' => $capitalInicial,
       'cuotaMensual' => $cuotaMensual
     ];
 
-    $json1 = json_encode($results);
+    //Table JSON
+    $table = [];
 
+    for ($i = 1; $i <= $anos * 12 ; $i++) {
+      $mes = $i;
+      $intereses2 = number_format($credito * $intereses,2,",",".")."$";
+      $amortizacion = number_format($m - ( $credito * $intereses),2,",",".")."$";
+      //$cuotaMensual = $cuotaMensual;
+      $capitalPendiente = 0;
 
+      if ($capital<0) {
+        $capitalPendiente = 0;
+      } else {
+        $capitalPendiente = $credito - ($m - ( $deuda * $intereses));
+        $capitalPendiente = number_format($capitalPendiente,2,",",".")."$";
+      }
 
-    //echo $downpayment;
-    echo $json1;
+      $totalint = $totalint + ( $credito * $intereses );
+      $totalIntereses = number_format($totalint,2,",",".").'$';
+
+      $objeto = [
+        "mes" => $i,
+        "intereses" => $intereses2,
+        "amortizacion" => $amortizacion,
+        "cuotaMensual" => $cuotaMensual,
+        "capitalPendiente" => $capitalPendiente
+      ];
+
+      array_push($table, $objeto);
+
+    }
+
+    $response = [
+      "data" => $results,
+      "table" => $table
+    ];
+
+    echo json_encode($response);
 
   }
 

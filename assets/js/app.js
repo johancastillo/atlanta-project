@@ -5,13 +5,9 @@ const app = new Vue({
     anos: 15,
     downpayment: 3.5,
     intereses: "",
+    geting: null,
     result: null,
-    results: [
-      {mes: 1, intereses: 24, amortizacion: 23, cuota_mensual: 150, capital_pendiente: 20},
-      {mes: 2, intereses: 24, amortizacion: 23, cuota_mensual: 150, capital_pendiente: 20},
-      {mes: 3, intereses: 24, amortizacion: 23, cuota_mensual: 150, capital_pendiente: 20},
-
-    ]
+    results: null
   },
   methods: {
     calcular(){
@@ -37,12 +33,18 @@ const app = new Vue({
         //Resetear campos de formularios al enviar datos
         $('#task-form').trigger('reset');
 
-        console.log(response);
-        this.result = JSON.parse(response);
-        console.log(this.result);
+
+        this.geting = JSON.parse(response);
+        this.result = this.geting.data;
+        this.results = this.geting.table;
+        console.log(this.results);
+        //this.results = JSON.parse(response);
 
       });
 
+    },
+    generarPdf(){
+      alert("Generando PDF...")
     }
   }
 });
