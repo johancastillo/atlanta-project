@@ -5,26 +5,23 @@
     $anos = floatval($_POST["anos"]);
     $intereses = floatval($_POST["intereses"]);
     $downpayment = floatval($_POST['downpayment']);
-    $totalin = 0;
+    $totalIntereses = 0;
 
-    //Calculos
+    //Calcular el Down Payment y el Capital Inicial
     $downpayment = $downpayment * $credito / 100;
     $credito = $credito - $downpayment;
     $capitalInicial = $credito + $downpayment;
+
     $intereses = ($intereses / 100) / 12;
-    $m = ($credito * $intereses * ( (1+$intereses) ** ($anos*12) ) ) / (((1+$intereses)**($anos*12))-1);
+    $m = ($credito * $intereses * ( (1 + $intereses)**($anos * 12) )) / (( (1 + $intereses)**($anos * 12) ) - 1);
 
-    //Convertir resultados a formato moneda
-    $downpayment = number_format($downpayment,2,',','.').'$';
-    $capitalInicial = number_format($capitalInicial,2,',','.').'$';
-    $cuotaMensual = number_format($m,2,',','.').'$';
-
+    $cuotaMensual = $m;
 
     //JSON 1
     $results = [
       'downpayment' => $downpayment,
       'capitalInicial' => $capitalInicial,
-      'cuotaMensual' => $cuotaMensual
+      'cuotaMensual' => number_format($cuotaMensual,2,',','.').'$'
     ];
 
     //Table JSON
@@ -32,28 +29,32 @@
 
     $capitalPendiente = $credito;
 
-    for ($i = 1; $i <= $anos * 12 ; $i++) {
+    for ($i = 1; $i <= $anos * 12; $i++) {
+      $totalIntereses = $totalIntereses + ($credito * $intereses);
       $mes = $i;
-      $intereses2 = number_format($credito * $intereses,2,",",".")."$";
-      $amortizacion = number_format($m - ( $credito * $intereses),2,",",".")."$";
-
-      $capitalPendiente = $capitalPendiente - ($m - ( $capitalPendiente * $intereses2));
+      $intereses2 = $credito * $intereses;
+      $amortizacion = ($m - ( $credito * $intereses));
+      $credito = $credito - ( $m - ($deuda * $intereses));;
+      if ($credito<0){
+        $capitalPendiente = "0";
+      }else{
+        $capitalPendiente = $credito;
+      }
 
       if ($capitalPendiente < 0) {
         $capitalPendiente = 0;
+        break;
       } else {
         $capitalPendiente = number_format($capitalPendiente,2,",",".")."$";
       }
 
-      $totalint = $totalint + ( $credito * $intereses );
-      $totalIntereses = number_format($totalint,2,",",".").'$';
 
       $objeto = [
         "mes" => $i,
-        "intereses" => $intereses2,
-        "amortizacion" => $amortizacion,
-        "cuotaMensual" => $cuotaMensual,
-        "capitalPendiente" => $capitalPendiente
+        "intereses" => number_format($intereses2,2,',','.').'$',
+        "amortizacion" => number_format($amortizacion,2,',','.').'$',
+        "cuotaMensual" => number_format($cuotaMensual,2,',','.').'$',
+        "capitalPendiente" => number_format($capitalPendiente,2,',','.').'$'
       ];
 
       array_push($table, $objeto);
