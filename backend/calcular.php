@@ -30,17 +30,18 @@
     //Table JSON
     $table = [];
 
+    $capitalPendiente = $credito;
+
     for ($i = 1; $i <= $anos * 12 ; $i++) {
       $mes = $i;
       $intereses2 = number_format($credito * $intereses,2,",",".")."$";
       $amortizacion = number_format($m - ( $credito * $intereses),2,",",".")."$";
-      //$cuotaMensual = $cuotaMensual;
-      $capitalPendiente = 0;
 
-      if ($capital<0) {
+      $capitalPendiente = $capitalPendiente - ($m - ( $capitalPendiente * $intereses2));
+
+      if ($capitalPendiente < 0) {
         $capitalPendiente = 0;
       } else {
-        $capitalPendiente = $credito - ($m - ( $deuda * $intereses));
         $capitalPendiente = number_format($capitalPendiente,2,",",".")."$";
       }
 
