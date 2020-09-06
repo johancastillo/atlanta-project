@@ -8,21 +8,17 @@
     $totalIntereses = 0;
 
     //Calcular el Down Payment y el Capital Inicial
+    $capitalInicial = $credito;
     $downpayment = $downpayment * $credito / 100;
+
+    //Nuevo valor de "credito"
     $credito = $credito - $downpayment;
-    $capitalInicial = $credito + $downpayment;
 
+    //Calculando los intereses
     $intereses = ($intereses / 100) / 12;
-    $m = ($credito * $intereses * ( (1 + $intereses)**($anos * 12) )) / (( (1 + $intereses)**($anos * 12) ) - 1);
 
-    $cuotaMensual = $m;
+    $cuotaMensual = ($credito * $intereses * ( (1 + $intereses)**($anos * 12) )) / (( (1 + $intereses)**($anos * 12) ) - 1);
 
-    //JSON 1
-    $results = [
-      'downpayment' => $downpayment,
-      'capitalInicial' => $capitalInicial,
-      'cuotaMensual' => number_format($cuotaMensual,2,',','.').'$'
-    ];
 
     //Table JSON
     $table = [];
@@ -33,8 +29,8 @@
       $totalIntereses = $totalIntereses + ($credito * $intereses);
       $mes = $i;
       $intereses2 = $credito * $intereses;
-      $amortizacion = ($m - ( $credito * $intereses));
-      $credito = $credito - ( $m - ($deuda * $intereses));;
+      $amortizacion = ($cuotaMensual - ( $credito * $intereses));
+      $credito = $credito - ( $cuotaMensual - ($credito * $intereses));;
       if ($credito<0){
         $capitalPendiente = "0";
       }else{
@@ -60,6 +56,14 @@
       array_push($table, $objeto);
 
     }
+
+    //JSON 1
+    $results = [
+      'downpayment' => number_format($downpayment,2,',','.').'$',
+      'capitalInicial' => number_format($capitalInicial,2,',','.').'$',
+      'cuotaMensual' => number_format($cuotaMensual,2,',','.').'$',
+      'totalIntereses' => number_format($totalIntereses,2,',','.').'$'
+    ];
 
     $response = [
       "data" => $results,
