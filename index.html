@@ -152,6 +152,10 @@
             </div>
 
           <!-- Tabla -->
+            <h4 v-show="results == null" class="text-center mt-3">
+              Ingrese los datos en el formulario para ver los resultados aquí.
+            </h4>
+
             <table v-show="results != null" class="table table-bordered table-sm text-center table-light mt-2">
               <thead>
                 <tr>
