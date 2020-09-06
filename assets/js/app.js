@@ -44,7 +44,8 @@ const app = new Vue({
 
     },
     generarPdf(){
-      alert("Generando PDF...")
+      //Redireccionar a otra página con datos mediante POST
+      $.redirect('backend/createPdf.php', {'nombre': 'Johan', 'apellido': 'Castillo'});
     }
   }
 });

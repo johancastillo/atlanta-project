@@ -1,5 +1,7 @@
 <?php
 
-  $search = $_POST['search'];
+  $nombre = $_POST['nombre'];
+
+  echo $nombre;
 
 ?>
