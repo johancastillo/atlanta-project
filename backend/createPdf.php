@@ -1,7 +1,11 @@
 <?php
 
-  $nombre = $_POST['nombre'];
+  $credito = $_POST['credito'];
 
-  echo $nombre;
+
+
+  echo $credito;
+  echo "<br>";
+
 
 ?>
