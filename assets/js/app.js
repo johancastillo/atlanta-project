@@ -45,7 +45,12 @@ const app = new Vue({
     },
     generarPdf(){
       //Redireccionar a otra página con datos mediante POST
-      $.redirect('backend/createPdf.php', {'credito': this.credito, 'apellido': 'Castillo'});
+      $.redirect('backend/createPdf.php', {
+        'credito': this.credito,
+        'anos': this.anos,
+        'downpayment': this.downpayment,
+        'intereses': this.intereses
+      });
     }
   }
 });
