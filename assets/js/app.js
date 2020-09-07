@@ -21,7 +21,6 @@ const app = new Vue({
       //Enviar datos del formulario a PHP mediante AJAX
       $.post('backend/calcular.php', postData, response =>{
 
-        //Mensaje de exito al crear una nueva tarea
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -37,8 +36,6 @@ const app = new Vue({
         this.geting = JSON.parse(response);
         this.result = this.geting.data;
         this.results = this.geting.table;
-        console.log(this.results);
-        //this.results = JSON.parse(response);
 
       });
 
